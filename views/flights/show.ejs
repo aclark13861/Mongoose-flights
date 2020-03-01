@@ -1,0 +1,32 @@
+<a href="/flights">All Flights</a>
+<h2>Flight Details</h2>
+<section id="show-page">
+    <form id="details-form" method="POST"
+    action="/flights/<%= flight._id %>/details">
+    <div>Airline: </div>
+    <div> <%= flight.airline %></div>
+    <div>Flight Number: </div>
+    <div> <%= flight.flightNumber %></div>
+    <div>Airport: <%= flight.airport %></div>
+    <div>Departure-Time: <%= flight.departure %></div>
+    <div>Arrival-Time: 
+        <input type="datetime-local" name="arrival"></div>
+   <label>Destination: </label>
+        <select name="airport">
+            <option value="AUS">AUS</option>
+            <option value="DEN">DEN</option>
+            <option value="SAN">SAN</option>
+            <option value="LAX">LAX</option>
+            <option value="DFW">DFW</option>
+        </select>
+   <input type="submit" value="Save Changes">
+ </form>
+</section>
+<tbody>
+    <% flight.destination.forEach(function(r) { %>
+      <tr>
+        <td><%= r.arrival %></td>
+        <td><%= r.airport %></td>
+      </tr>
+    <% }); %>
+  </tbody>
