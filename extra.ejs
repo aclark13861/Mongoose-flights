@@ -7,3 +7,24 @@
          <option value="LAX">LAX</option>
          <option value="DFW">DFW</option>
      </select>
+
+
+
+     <div>Tickets:</div>
+  <ul>
+    <%- tickets.map(p => 
+      `<li>${p.seat} <small></li>`
+    ).join('') %>
+  </ul>
+  <!-- end cast list -->
+</section>
+	
+<!-- add to cast form below -->
+<form id="add-ticket-to-flight" action="/flights/<%= flight._id%>/tickets" method="POST">
+  <select name="TicketId">
+    <%- tickets.map(p => 
+      `<option value="${p._id}">${p.seat}</option>`
+    ).join('') %>
+  </select>
+  <button type="submit">Add Ticket</button>
+</form>

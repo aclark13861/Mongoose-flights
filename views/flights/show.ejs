@@ -22,11 +22,18 @@
    <input type="submit" value="Save Changes">
  </form>
 </section>
-<tbody>
-    <% flight.destination.forEach(function(r) { %>
-      <tr>
-        <td><%= r.arrival %></td>
-        <td><%= r.airport %></td>
-      </tr>
-    <% }); %>
-  </tbody>
+<p>Please first ensure that the Ticket is not already purchased</p>
+    <select>
+      <% tickets.forEach(function(t) { %>
+        <option><%= t.seat %></option>
+      <% }) %>
+    </select>
+  </p>
+  <form id="add-ticket-form" action="/tickets" method="POST">
+    <label>Ticket:</label>
+    <input type="text" name="seat">
+    <input type="hidden" name="flight" value="<%= flight._id %>">
+    <label>Price:</label>
+    <input type="text" name="price">
+    <input type="submit" value="Add Ticket">
+  </form>

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Ticket = require('../models/ticket');
 
 const destinationSchema = new Schema({
     airport: {
@@ -27,6 +28,10 @@ airport: {
     enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
     default: 'DEN'
 },
+// ticket: [{
+//     type: Schema.Types.ObjectId,
+//     ref: 'Ticket'
+// }],
 
 destination: [destinationSchema],
 
@@ -34,7 +39,7 @@ departure: {
     type: Date,
     default: function () {
         return new Date().getFullYear() + 1;
-    }
+    },
 },});
 
 module.exports = mongoose.model(
