@@ -1,4 +1,4 @@
-<a href="/flights">All Flights</a>
+<%- include('../partials/header'); %>
 <h2>Flight Details</h2>
 <section id="show-page">
     <form id="details-form" method="POST"
@@ -22,13 +22,6 @@
    <input type="submit" value="Save Changes">
  </form>
 </section>
-<p>Please first ensure that the Ticket is not already purchased</p>
-    <select>
-      <% tickets.forEach(function(t) { %>
-        <option><%= t.seat %></option>
-      <% }) %>
-    </select>
-  </p>
   <form id="add-ticket-form" action="/tickets" method="POST">
     <label>Ticket:</label>
     <input type="text" name="seat">
@@ -37,3 +30,11 @@
     <input type="text" name="price">
     <input type="submit" value="Add Ticket">
   </form>
+
+  <p>Please first ensure that the Ticket is not already purchased</p>
+      <% tickets.forEach(function(t) { %>
+      </ul>
+        <li><%= t.seat %>-<%= t.price %></li>
+      </ul>
+      <% }) %>
+  </p>
